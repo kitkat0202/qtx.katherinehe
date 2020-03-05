@@ -19,7 +19,7 @@ public class LogInPageObject extends SuperPageObject{
 		return this;
 	}
 
-	public SecurePageObject login(String userName, String password) {
+	public LogInSecurePageObject login(String userName, String password) {
 		WebElement userNameTextBox = driver.findElement(By.id("username"));
 		WebElement passwordTextBox = driver.findElement(By.id("password"));
 		WebElement submitBox = driver.findElement(By.tagName("button"));
@@ -27,7 +27,7 @@ public class LogInPageObject extends SuperPageObject{
 		userNameTextBox.sendKeys(userName);
 		passwordTextBox.sendKeys(password);
 		submitBox.click();
-		return new SecurePageObject(driver);
+		return new LogInSecurePageObject(driver);
 
 	}
 

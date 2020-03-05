@@ -4,12 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SecurePageObject extends SuperPageObject{
+public class LogInSecurePageObject extends SuperPageObject{
 
 	@FindBy(id="flash")
 	private WebElement greenBox;
 
-	public SecurePageObject(WebDriver driverInstance) {
+	public LogInSecurePageObject(WebDriver driverInstance) {
 		super(driverInstance);
 	}
 
