@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class CheckBoxPageObject extends SuperPageObject {
-	
+
 	private String BaseURL;
 	private List<WebElement> checkBoxList;
 
@@ -23,10 +23,10 @@ public class CheckBoxPageObject extends SuperPageObject {
 		Navigate(BaseURL + url);
 		return this;
 	}
-	
+
 	public CheckBoxPageObject getAllUncheckBoxes(String cssSelector) {
 		checkBoxList = driver.findElements(By.cssSelector(cssSelector));
-		
+
 		return this;
 	}
 
@@ -34,10 +34,10 @@ public class CheckBoxPageObject extends SuperPageObject {
 		for(WebElement checkBox:checkBoxList) {
 			checkBox.click(); 
 		}
-		
+
 		return this;
 	}
-	
+
 	public CheckBoxPageObject confirmUncheckBoxListEmpty() {
 		if(!checkBoxList.isEmpty()) {
 			Assert.fail("Checkboxes can not be selected");

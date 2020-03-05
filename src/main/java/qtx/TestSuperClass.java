@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeTest;
 
 public class TestSuperClass {
 	protected WebDriver driver;
-	
+
 	protected String Baseurl;
 
 	@BeforeTest
@@ -17,7 +17,7 @@ public class TestSuperClass {
 
 	@AfterTest
 	public void afterTest() {
-				  driver.quit();
+		driver.quit();
 	}
 
 }

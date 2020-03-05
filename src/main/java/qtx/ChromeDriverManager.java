@@ -20,13 +20,13 @@ public class ChromeDriverManager extends DriverManager {
 
 	@Override
 	protected void createDriver() {
-		 System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-		 driver = new ChromeDriver();
-		 
-		 long time = 1000;
-		 TimeUnit unit = TimeUnit.MILLISECONDS;
-		 driver.manage().timeouts().implicitlyWait(time, unit);
-		 driver.manage().timeouts().pageLoadTimeout(time, unit);
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+		driver = new ChromeDriver();
+
+		long time = 1000;
+		TimeUnit unit = TimeUnit.MILLISECONDS;
+		driver.manage().timeouts().implicitlyWait(time, unit);
+		driver.manage().timeouts().pageLoadTimeout(time, unit);
 	}
 
 }

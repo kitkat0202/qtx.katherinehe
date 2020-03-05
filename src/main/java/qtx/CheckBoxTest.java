@@ -10,12 +10,12 @@ public class CheckBoxTest extends TestSuperClass {
 	@Test
 	public void selectAllCheckBoxes() {
 		String cssSelectorForNotCheck = ("input[type='checkbox']:not(:checked)");
-		
+
 		new CheckBoxPageObject(driver, Baseurl)
-				.OpenCheckBoxPage() // Open Page
-				.getAllUncheckBoxes(cssSelectorForNotCheck)
-				.checkAllUncheckBoxes() // Check all boxes
-				.getAllUncheckBoxes(cssSelectorForNotCheck)
-				.confirmUncheckBoxListEmpty(); // see if there are any empty boxes
-	}
+			.OpenCheckBoxPage() // Open Page
+			.getAllUncheckBoxes(cssSelectorForNotCheck)
+			.checkAllUncheckBoxes() // Check all boxes
+			.getAllUncheckBoxes(cssSelectorForNotCheck)
+			.confirmUncheckBoxListEmpty(); // see if there are any empty boxes
+		}
 }

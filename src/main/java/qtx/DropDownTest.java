@@ -17,7 +17,7 @@ public class DropDownTest extends TestSuperClass {
 				.setDropdownList(expectedSelection)
 				.getDropDownListValue();
 
-		Assert.assertEquals(actualSelection, expectedSelection, "Can not select a dropdown list value!");
+		Assert.assertEquals(actualSelection, expectedSelection, "Cannot select a dropdown list value!");
 	}
 
 }
