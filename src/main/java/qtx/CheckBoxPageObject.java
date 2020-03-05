@@ -24,8 +24,8 @@ public class CheckBoxPageObject extends SuperPageObject {
 		return this;
 	}
 
-	public CheckBoxPageObject getAllUncheckBoxes(String cssSelector) {
-		checkBoxList = driver.findElements(By.cssSelector(cssSelector));
+	public CheckBoxPageObject getAllUncheckBoxes() {
+		checkBoxList = driver.findElements(By.cssSelector("input[type='checkbox']:not(:checked)"));
 
 		return this;
 	}
