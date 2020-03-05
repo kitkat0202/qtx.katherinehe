@@ -1,1 +1,10 @@
 /target/
+*.prefs
+*.html
+*.gif
+*.properties
+*.png
+*.js
+testng*
+TEST-*
+Default test.xml
