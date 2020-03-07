@@ -32,15 +32,15 @@ public class CheckBoxPageObject extends SuperPageObject {
 		}
 		return this;
 	}
-	
+
 	public CheckBoxPageObject uncheckAllCheckBoxes() {
 		for(WebElement checkBox:checkBoxList) {
 			checkBox.click();
 		}
 		return this;
 	}
-	
-	
+
+
 
 	public boolean confirmNoUncheckBoxes() {
 		if(!uncheckBoxList.isEmpty()) {

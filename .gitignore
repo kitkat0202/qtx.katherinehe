@@ -8,3 +8,4 @@ testng*
 TEST-*
 Default test.xml
 teacher/
+/test-output/

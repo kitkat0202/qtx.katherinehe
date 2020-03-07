@@ -20,7 +20,7 @@ public abstract class SuperPageObject {
 		String url = new String(baseUrl + extention);
 		driver.navigate().to(url);
 	}
-	
+
 	protected Select getSelect(WebElement element) {
 		return new Select(element);
 	}

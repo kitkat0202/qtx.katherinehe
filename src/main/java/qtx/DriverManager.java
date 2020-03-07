@@ -10,10 +10,10 @@ public abstract class DriverManager {
 		if(driver == null) {
 			createDriver();
 		}
-		
+
 		return driver;
 	}
-	
+
 	public void quitDriver() {
 		if(driver != null) {
 			driver.quit();
