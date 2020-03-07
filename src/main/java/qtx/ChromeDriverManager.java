@@ -1,32 +1,25 @@
 package qtx;
 
-import java.util.concurrent.TimeUnit;
-
+import java.util.HashMap;
+import java.util.Map;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class ChromeDriverManager extends DriverManager {
 
 	@Override
-	protected void startService() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void stopService() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	protected void createDriver() {
 		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-		driver = new ChromeDriver();
+		
+		ChromeOptions options = new ChromeOptions();
+		
+		Map<String, Object> prefs = new HashMap<String, Object>();
+		prefs.put("credentials_enable_service", false);
+		prefs.put("profile.password_manager_enabled", false);
 
-		long time = 1000;
-		TimeUnit unit = TimeUnit.MILLISECONDS;
-		driver.manage().timeouts().implicitlyWait(time, unit);
-		driver.manage().timeouts().pageLoadTimeout(time, unit);
+		options.setExperimentalOption("prefs", prefs);
+
+		driver = new ChromeDriver(options);
 	}
 
 }

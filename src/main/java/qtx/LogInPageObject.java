@@ -6,16 +6,13 @@ import org.openqa.selenium.WebElement;
 
 public class LogInPageObject extends SuperPageObject{
 
-	private String BaseURL;
 
-	public LogInPageObject(WebDriver driverInstance, String Baseurl) {
-		super(driverInstance);
-		BaseURL = Baseurl;
+	public LogInPageObject(WebDriver driverInstance, String baseUrl) {
+		super(driverInstance, baseUrl);
 	}
 
 	public LogInPageObject OpenLoginPage() {
-		String url = "/login";
-		Navigate(BaseURL + url);
+		super.Navigate("/login");
 		return this;
 	}
 
@@ -27,7 +24,7 @@ public class LogInPageObject extends SuperPageObject{
 		userNameTextBox.sendKeys(userName);
 		passwordTextBox.sendKeys(password);
 		submitBox.click();
-		return new LogInSecurePageObject(driver);
+		return new LogInSecurePageObject(driver, baseUrl);
 
 	}
 

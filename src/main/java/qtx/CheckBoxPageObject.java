@@ -2,7 +2,6 @@ package qtx;
 
 
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,39 +9,45 @@ import org.testng.Assert;
 
 public class CheckBoxPageObject extends SuperPageObject {
 
-	private String BaseURL;
+	private List<WebElement> uncheckBoxList;
 	private List<WebElement> checkBoxList;
 
-	public CheckBoxPageObject(WebDriver driverInstance, String Baseurl) {
-		super(driverInstance);
-		BaseURL = Baseurl;
+	public CheckBoxPageObject(WebDriver driverInstance, String baseUrl) {
+		super(driverInstance, baseUrl);
 	}
 
 	public CheckBoxPageObject OpenCheckBoxPage() {
-		String url = "/checkboxes";
-		Navigate(BaseURL + url);
+		super.Navigate("/checkboxes");
 		return this;
 	}
 
 	public CheckBoxPageObject getAllUncheckBoxes() {
-		checkBoxList = driver.findElements(By.cssSelector("input[type='checkbox']:not(:checked)"));
-
+		uncheckBoxList = driver.findElements(By.cssSelector("input[type='checkbox']:not(:checked)"));
 		return this;
 	}
+
 
 	public CheckBoxPageObject checkAllUncheckBoxes() {
-		for(WebElement checkBox:checkBoxList) {
-			checkBox.click(); 
+		for(WebElement checkBox:uncheckBoxList) {
+			checkBox.click();
 		}
-
 		return this;
 	}
-
-	public CheckBoxPageObject confirmUncheckBoxListEmpty() {
-		if(!checkBoxList.isEmpty()) {
-			Assert.fail("Checkboxes can not be selected");
+	
+	public CheckBoxPageObject uncheckAllCheckBoxes() {
+		for(WebElement checkBox:checkBoxList) {
+			checkBox.click();
 		}
+		return this;
+	}
+	
+	
 
-		return null;
+	public boolean confirmNoUncheckBoxes() {
+		if(!uncheckBoxList.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

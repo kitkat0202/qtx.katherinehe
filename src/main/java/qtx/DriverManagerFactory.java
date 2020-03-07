@@ -1,14 +1,19 @@
 package qtx;
 
-public class DriverManagerFactory {
-	public static DriverManager getManager(DriverType type) {
 
-		switch(type) {
+public class DriverManagerFactory {
+	public static DriverManager getManager(DriverTypes driverType) throws Exception {
+		
+		DriverManager driverManager;
+		
+		switch (driverType) {
 		case CHROME:
-			return new ChromeDriverManager();
+			driverManager = new ChromeDriverManager();
+			break;
 		default:
-			System.out.printf("We do not support this driver: %s", type);
-		}
-		return null;
+			throw new Exception("The request driver type is not supported.");
+		}	
+		
+		return driverManager;
 	}
 }

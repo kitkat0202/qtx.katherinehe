@@ -6,18 +6,19 @@ import org.testng.annotations.BeforeTest;
 
 public class TestSuperClass {
 	protected WebDriver driver;
-
-	protected String Baseurl;
+	protected String baseUrl;
+	protected DriverManager driverManager;
 
 	@BeforeTest
-	public void beforeTest() {
-		driver = DriverManagerFactory.getManager(DriverType.CHROME).getDriver();
-		Baseurl = "http://the-internet.herokuapp.com";
+	public void beforeTest() throws Exception {
+		this.baseUrl = "http://the-internet.herokuapp.com";
+		driverManager = DriverManagerFactory.getManager(DriverTypes.CHROME);
+		driver = driverManager.getDriver();
 	}
 
 	@AfterTest
 	public void afterTest() {
-		driver.quit();
+//		driverManager.quitDriver();
 	}
 
 }
