@@ -56,4 +56,23 @@ public class TheInternet  extends TestSuperClass {
 
 		Assert.assertTrue(isAllBoxesChecked, "The Checkbox could not be checked");
 	}
+	
+	
+	//As a user
+	//I want to move the slider to the max value
+	//So I can prove that I know how to use the Actions builder
+	@Test
+	public void testHorizontalSlider() {
+		//arrange
+		String expectedSpanValue = "5";
+		
+		//act
+		String actualSpanValue = new SliderPageObject(driver,baseUrl)
+				.OpenSliderPage()
+				.MoveSlider()
+				.getSpanInfo();
+		
+		//assert
+		Assert.assertEquals(actualSpanValue, expectedSpanValue, "The Slider Doesnot work");
+	}
 }
