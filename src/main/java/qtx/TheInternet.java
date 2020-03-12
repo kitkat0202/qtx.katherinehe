@@ -1,6 +1,7 @@
 package qtx;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class TheInternet  extends TestSuperClass {
@@ -74,5 +75,24 @@ public class TheInternet  extends TestSuperClass {
 		
 		//assert
 		Assert.assertEquals(actualSpanValue, expectedSpanValue, "The Slider Doesnot work");
+	}
+	
+	// As a user
+	// I want to enter numbers in input
+	// So I know it can have numbers enterd in
+	@Test(dataProvider="objNum")
+	public void testNumberInput(int num) {
+		int actualNum = new InputPageObject(driver, baseUrl)
+				.OpenInputPage()
+				.EnterNumber(num)
+				.getNum();
+		
+		Assert.assertEquals(actualNum, num);
+	}
+	
+	
+	@DataProvider(name = "objNum")
+	public Object[] getNumberData() {
+		return new Object[] { 2, 3, 5, 8, 13 };
 	}
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class SliderPageObject extends SuperPageObject{
+public class SliderPageObject extends SuperPageObject {
 	
 
 	public SliderPageObject(WebDriver driverInstance, String baseUrl) {
