@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TheInternet  extends TestSuperClass {
+public class TheInternet extends TestSuperClass {
 	// As a user
 	// I want to log in
 	// So users can do stuff
