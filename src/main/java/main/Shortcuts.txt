@@ -1,0 +1,24 @@
+Running
+Ctrl + F11 		--> Runs last launched
+F11 			--> Runs last launched in Debug mode
+
+Views
+Ctrl + F7 		--> Switch Views
+Alt + Shift + N	--> Opens New Context Menu
+
+Editor
+Ctrl + Space 	 	--> Content assist/Code Completion
+Ctrl + T			--> Show inheritance tree
+Ctrl + Shift + F	--> Format source code
+Ctrl + I			--> Correct indentation
+Ctrl + Shift + O	--> Organize Imports
+Ctrl + Delete 		--> Delete the current line
+Ctrl + 1			--> Shows Quickfix content menu
+Alt + Shift + s / o --> Generate constructor 
+
+Shift + Enter		--> Adds a blank line below the current line
+
+new + Ctrl + Space	--> Opens the create object template
+
+Debugging
+Ctrl + Shift + B	--> Toggle Breakpoint
