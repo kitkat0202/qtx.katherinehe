@@ -1,6 +1,5 @@
 package framework;
 
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,12 +8,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class ChromeDriverManager extends DriverManager {
 
+	@Override
 	protected void createDriver() {
-		URL url = ClassLoader.getSystemResource("chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver", url.getFile());
-		
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+
 		ChromeOptions options = new ChromeOptions();
-		
+
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("credentials_enable_service", false);
 		prefs.put("profile.password_manager_enabled", false);
@@ -23,4 +22,5 @@ public class ChromeDriverManager extends DriverManager {
 
 		driver = new ChromeDriver(options);
 	}
+
 }

@@ -29,6 +29,6 @@ public class TestSuperClass {
 
 	@AfterMethod
 	public void afterTest() {
-		driverManager.quitDriver();
+//		driverManager.quitDriver();
 	}
 }

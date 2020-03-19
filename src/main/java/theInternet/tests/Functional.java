@@ -3,10 +3,12 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import theInternet.pages.AlertPopupPage;
 import theInternet.pages.CheckboxPage;
 import theInternet.pages.DropdownListPage;
 import theInternet.pages.HomePage;
 import theInternet.pages.InputPage;
+import theInternet.pages.JQueryMenuPage;
 import theInternet.pages.LoginPage;
 import theInternet.pages.SliderPage;
 import theInternet.tests.TestSuperClass;
@@ -16,7 +18,7 @@ public class Functional extends TestSuperClass{
 	//As a SDET
 	//I want navigate to the website
 	//So that I know I can create the webdriver object 
-	@Test
+//	@Test
 	public void canLaunchChromeDriver() {	
 		//arrange
 		String expectedPageTitle = "The Internet";
@@ -33,7 +35,7 @@ public class Functional extends TestSuperClass{
 	//As a user
 	//I want select option 2 from the dropdownlist 
 	//so that an option is selected
-	@Test
+//	@Test
 	public void canSelectDropdownListItem() {
 		//arrange
 		String expectedSelection = "Option 2";
@@ -51,7 +53,7 @@ public class Functional extends TestSuperClass{
 	//As a user 
 	//I want to login 
 	//So that users can do stuff
-	@Test
+//	@Test
 	public void canLogIn() {
 		//arrange
 		String userName = "tomsmith";
@@ -71,7 +73,7 @@ public class Functional extends TestSuperClass{
 	//As a user
 	//I want to toggle the checkboxes on the checkbox page
 	//So that I can prove I know how
-	@Test
+//	@Test
 	public void canToggleCheckboxes() {
 		//arrange
 		boolean isChecked1expected = true;
@@ -94,7 +96,7 @@ public class Functional extends TestSuperClass{
 	//As a user
 	//I want to move the slider to maximum value
 	//So that I prove I can automate mouse actions
-	@Test
+//	@Test
 	public void canMoveSliderToMaxRange() {
 		//arrange	
 		float expectedSliderValue = 5f;
@@ -112,7 +114,7 @@ public class Functional extends TestSuperClass{
 	//As a user 
 	//I want to enter values in the input box 
 	//So I can prove I know how to use data provider
-	@Test(dataProvider="numberData")
+//	@Test(dataProvider="numberData")
 	public void canInputNumbers(int number) {
 
 		int actualNumberInput = new InputPage(driver, baseUrl)
@@ -127,5 +129,53 @@ public class Functional extends TestSuperClass{
 	@DataProvider(name = "numberData")
 	public Object[] getNumberData() {
 		return new Object[] { 2, 3, 5, 8, 13 };
+	}
+	
+	// As a User
+	// I want to click the last item on the menu
+	// So that I can navigate to that page
+//	@Test
+	public void canNavigateMenu() throws Exception {
+		String expectedHeading = "menu.xls";
+		String downloadLocation = "C:\\Users\\hekat\\Downloads";
+		
+		String actualHeading = new JQueryMenuPage(driver, baseUrl)
+				.navigate()
+				.ClickItemByMenuPath(new String[] { "Enabled", "Downloads", "Excel" })
+				.waitTillDownloaded(downloadLocation)
+				.getDownloadedFile();
+
+		Assert.assertEquals(actualHeading, expectedHeading, "\n\nThe Jquery Menu Failed. \n\n");
+	}
+	
+	
+	// As a User
+	// I want test Alert popup
+	// So that I know it works
+	@Test
+	public void canTestAlerts() {
+		String promptString = "Hello";
+
+		String expectedTextJSAlert = "You successfuly clicked an alert";
+		String expectedTextJSConfirm = "You clicked: Ok";
+		String expectedTextJSDecline = "You clicked: Cancel";
+		String expectedTextJSPrompt = "You entered: " + promptString;
+		
+		
+		String actualTextJSAlert = new AlertPopupPage(driver, baseUrl)
+				.navigate()
+				.clickAlertBtn("Click for JS Alert")
+				.acceptprompt()
+				.getResultText();
+
+		String actualTextJSConfirm = "You clicked: Ok";
+		String actualTextJSDecline = "You clicked: Cancel";
+		String actualTextJSPrompt = "You entered: " + promptString;
+		
+		
+		Assert.assertEquals(actualTextJSAlert, expectedTextJSAlert, "Alert Test - JS Alert Test Failed");
+		Assert.assertEquals(actualTextJSConfirm, expectedTextJSConfirm, "Alert Test - JS Confirm Test Failed");
+		Assert.assertEquals(actualTextJSPrompt, expectedTextJSPrompt, "Alert Test - JS Prompt Test Failed");
+		
 	}
 }
