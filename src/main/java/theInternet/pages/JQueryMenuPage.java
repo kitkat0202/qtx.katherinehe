@@ -53,26 +53,23 @@ public class JQueryMenuPage extends SuperPageObject {
 
 
 	public String getDownloadedFile(){
-		return deleteDownloadedFile();
+		deleteDownloadedFile();
+		return fileName;
 	}
 	
-	private String deleteDownloadedFile() {
+	private void deleteDownloadedFile() {
 		String filesToDelete = dir + "\\" + fileName;
 
 		try { 
             Files.deleteIfExists(Paths.get(filesToDelete)); 
         } catch(NoSuchFileException e) { 
             System.out.println("No such file/directory exists");
-            return null;
         } catch(DirectoryNotEmptyException e) { 
             System.out.println("Directory is not empty.");
-            return null;
         } catch(IOException e) { 
             System.out.println("Invalid permissions.");
-            return null;
         }
 		
-		return fileName;
 	}
 
 

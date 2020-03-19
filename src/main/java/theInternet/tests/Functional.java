@@ -1,12 +1,17 @@
 package theInternet.tests;
+import java.util.Arrays;
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import theInternet.pages.AlertPopupPage;
 import theInternet.pages.CheckboxPage;
+import theInternet.pages.DownladPage;
 import theInternet.pages.DropdownListPage;
 import theInternet.pages.HomePage;
+import theInternet.pages.HoverProfilePage;
 import theInternet.pages.InputPage;
 import theInternet.pages.JQueryMenuPage;
 import theInternet.pages.LoginPage;
@@ -132,7 +137,7 @@ public class Functional extends TestSuperClass{
 	}
 	
 	// As a User
-	// I want to click the last item on the menu
+	// I want to click the last item on the MENU AND DOWNLOAD
 	// So that I can navigate to that page
 //	@Test
 	public void canNavigateMenu() throws Exception {
@@ -148,11 +153,10 @@ public class Functional extends TestSuperClass{
 		Assert.assertEquals(actualHeading, expectedHeading, "\n\nThe Jquery Menu Failed. \n\n");
 	}
 	
-	
 	// As a User
-	// I want test Alert popup
+	// I want test ALERT POPUP
 	// So that I know it works
-	@Test
+//	@Test
 	public void canTestAlerts() {
 		String promptString = "Hello";
 
@@ -168,14 +172,65 @@ public class Functional extends TestSuperClass{
 				.acceptprompt()
 				.getResultText();
 
-		String actualTextJSConfirm = "You clicked: Ok";
-		String actualTextJSDecline = "You clicked: Cancel";
-		String actualTextJSPrompt = "You entered: " + promptString;
+		String actualTextJSConfirm = new AlertPopupPage(driver, baseUrl)
+				.navigate()
+				.clickAlertBtn("Click for JS Confirm")
+				.acceptprompt()
+				.getResultText();
+		
+		String actualTextJSDecline = new AlertPopupPage(driver, baseUrl)
+				.navigate()
+				.clickAlertBtn("Click for JS Confirm")
+				.declineprompt()
+				.getResultText();
+		
+		String actualTextJSPrompt = new AlertPopupPage(driver, baseUrl)
+				.navigate()
+				.clickAlertBtn("Click for JS Prompt")
+				.sendTextToAlertandAccept(promptString)
+				.getResultText();
 		
 		
 		Assert.assertEquals(actualTextJSAlert, expectedTextJSAlert, "Alert Test - JS Alert Test Failed");
 		Assert.assertEquals(actualTextJSConfirm, expectedTextJSConfirm, "Alert Test - JS Confirm Test Failed");
+		Assert.assertEquals(actualTextJSDecline, expectedTextJSDecline, "Alert Test - JS Decline Test Failed");
 		Assert.assertEquals(actualTextJSPrompt, expectedTextJSPrompt, "Alert Test - JS Prompt Test Failed");
+		
+	}
+	
+	// As a User
+	// I want to HOVER OVER IMAGE and get the profile url
+	// so I know the hover over and url are working and correct
+//	@Test
+	public void checkHoverAndProfileUrl() {
+		List<String> expectedUrls = Arrays.asList("http://the-internet.herokuapp.com/users/1", "http://the-internet.herokuapp.com/users/2", "http://the-internet.herokuapp.com/users/3");
+		
+		List<String> actualUrls = new HoverProfilePage(driver, baseUrl)
+				.navigate()
+				.hoverOverImg()
+				.getViewProfileUrl();
+
+		for(int i = 0; i < actualUrls.size(); i++) {
+			Assert.assertEquals(actualUrls.get(i), expectedUrls.get(i), "Profile Hover Test Fail at index: " + i);
+		}
+	}
+	
+	// As a User
+	// I want to
+	// So I 
+	@Test
+	public void getTextFileAndRead() throws Exception {
+		String downloadedLocation = "C:\\Users\\hekat\\Downloads";
+		String Link = "text.txt";
+		String expectedText = "text";
+		
+		String actualText = new DownladPage(driver, baseUrl)
+				.navigate()
+				.downloadFile(Link)
+				.waitTillDownloaded(downloadedLocation)
+				.getTextInFile();
+		
+		Assert.assertEquals(actualText, expectedText, "File text.txt Download Test Fail");
 		
 	}
 }
