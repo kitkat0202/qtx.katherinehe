@@ -47,6 +47,7 @@ public class DownladPage extends SuperPageObject {
 
 	public String getTextInFile() throws Exception {
 		String Text = readFileText(getLatestFilefromDir(dir));
+		System.out.println("\n\nDownload text.txt and print test: " + Text + "\n\n");
 		deleteDownloadedFile();
 		return Text;
 	}
