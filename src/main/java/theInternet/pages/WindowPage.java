@@ -19,10 +19,6 @@ public class WindowPage extends SuperPageObject {
 	public WindowPage(WebDriver driver, String baseUrl) {
 		super(driver, baseUrl);
 	}
-	
-	private void pt(String string) {
-		System.out.println("\n" + string + "\n");
-	}
 
 	public WindowPage navigate() {
 		super.navigate("/windows");

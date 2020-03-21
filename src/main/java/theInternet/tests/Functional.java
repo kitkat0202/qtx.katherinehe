@@ -17,6 +17,7 @@ import theInternet.pages.InputPage;
 import theInternet.pages.JQueryMenuPage;
 import theInternet.pages.LoginPage;
 import theInternet.pages.SliderPage;
+import theInternet.pages.TablesPage;
 import theInternet.pages.WindowPage;
 import theInternet.tests.TestSuperClass;
 
@@ -269,5 +270,15 @@ public class Functional extends TestSuperClass{
 	// As a User
 	// I want to read the amount due of jdoe@hotmail
 	// So that I can get the amount due
-	
+	@Test
+	public void getTableData() {
+		String expectedDueAmount = "$100.00";
+		
+		String actualDueAmount = new TablesPage(driver, baseUrl)
+				.navigate()
+				.getTableWithID("table1")
+				.getAdjacentValueOf("jdoe@hotmail.com");
+		
+		Assert.assertEquals(actualDueAmount, expectedDueAmount, "Table Test Failed");
+	}
 }
