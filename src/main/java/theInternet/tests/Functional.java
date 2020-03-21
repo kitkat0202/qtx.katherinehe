@@ -252,9 +252,9 @@ public class Functional extends TestSuperClass{
 	}
 	
 	// As a User
-	// I wan to open link in new tab, get header and close tab
-	// So that I know I can
-	@Test
+	// I want to open link in new tab, get header and close tab
+	// So that I know I can know I can do it
+//	@Test
 	public void openTabGetHeaderAndCloseTab() {
 		String expectedHeaderText = "New Window";
 		
@@ -265,4 +265,9 @@ public class Functional extends TestSuperClass{
 		
 		Assert.assertEquals(actualHeaderText, expectedHeaderText, "Getting Text from new window tab TEST Failed.");
 	}
+	
+	// As a User
+	// I want to read the amount due of jdoe@hotmail
+	// So that I can get the amount due
+	
 }
