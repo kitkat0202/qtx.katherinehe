@@ -12,6 +12,7 @@ import theInternet.pages.DownladPage;
 import theInternet.pages.DropdownListPage;
 import theInternet.pages.HomePage;
 import theInternet.pages.HoverProfilePage;
+import theInternet.pages.IframePage;
 import theInternet.pages.InfiniteScrollPage;
 import theInternet.pages.InputPage;
 import theInternet.pages.JQueryMenuPage;
@@ -270,7 +271,7 @@ public class Functional extends TestSuperClass{
 	// As a User
 	// I want to read the amount due of jdoe@hotmail
 	// So that I can get the amount due
-	@Test
+//	@Test
 	public void getTableData() {
 		String expectedDueAmount = "$100.00";
 		
@@ -280,5 +281,21 @@ public class Functional extends TestSuperClass{
 				.getAdjacentValueOf("jdoe@hotmail.com");
 		
 		Assert.assertEquals(actualDueAmount, expectedDueAmount, "Table Test Failed");
+	}
+	
+	// As a User
+	// I want to read the amount due of jdoe@hotmail
+	// So that I can get the amount due
+	@Test
+	public void ReadIframe() {
+		List<String> expectedTexts = Arrays.asList("LEFT", "MIDDLE", "RIGHT", "BOTTOM");
+		
+		List<String> actualTexts = new IframePage(driver, baseUrl)
+				.navigate()
+				.clickLinkContaining("Nested Frames")
+				.enterIframeAndGetText();
+		for(int i = 0; i < actualTexts.size(); i++) {
+			Assert.assertEquals(actualTexts.get(i), expectedTexts.get(i), "Table Test Failed");
+		}
 	}
 }

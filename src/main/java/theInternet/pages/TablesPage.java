@@ -11,10 +11,6 @@ public class TablesPage extends SuperPageObject {
 	public TablesPage(WebDriver driver, String baseUrl) {
 		super(driver, baseUrl);
 	}
-	
-	private void pt(String string) {
-		System.out.println("\n" + string + "\n");
-	}
 
 	public TablesPage navigate() {
 		super.navigate("/tables");
