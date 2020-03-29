@@ -24,7 +24,7 @@ public class SakilaDatabaseHW {
 	String password = new devKeys().getMySQLPassword();
 	Connection connection = null;
 
-//	@Test
+	@Test
 	public void canConnectToDatabase() throws SQLException {
 		try {
 			connection = DriverManager.getConnection(url, userId, password);
@@ -264,7 +264,7 @@ public class SakilaDatabaseHW {
 		Assert.assertEquals(updatedTimestamp, currentTimestamp, "Timestamp update unsuccessful");
 	}
 	// 10. Delete the new store from the store table.
-	@Test
+//	@Test
 	public void canDeleteStoreRow() throws SQLException {
 		
 		String getStaff_sql = "SELECT * FROM sakila.staff WHERE staff_id = (SELECT MAX(staff_id) FROM sakila.staff)";
